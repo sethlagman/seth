@@ -1,7 +1,7 @@
 /* ===== shadcn-inspired design tokens ===== */
 :root,
 [data-theme="light"] {
-    --background: 0 0% 100%;
+    --background: 0 0% 96%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -76,7 +76,7 @@ body {
 }
 
 [data-theme="light"] body {
-    background: #fff;
+    background: hsl(var(--background));
 }
 
 [data-theme="dark"] body {
@@ -665,7 +665,7 @@ h2 {
 }
 
 .terminal-output {
-    color: hsl(220 9% 75%);
+    color: hsl(110, 79%, 49%);
     padding-left: 1.25rem;
     border-left: 2px solid hsl(220 14% 22%);
     margin-left: 0.25rem;
