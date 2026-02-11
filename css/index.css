@@ -365,6 +365,10 @@ h2 {
     padding: 1rem 1.25rem;
 }
 
+.connect-section.reveal {
+    transition-delay: 0.12s;
+}
+
 .connect-title {
     font-size: 0.75rem;
     font-weight: 600;
@@ -416,6 +420,8 @@ h2 {
     background: hsl(var(--muted) / 0.6);
     border: 1px solid hsl(var(--border));
     border-radius: var(--radius-lg);
+    animation: sectionRevealIn 2.5s ease-out forwards;
+    opacity: 0;
 }
 
 .status-pill {
@@ -473,6 +479,13 @@ h2 {
 .cta-button:focus-visible {
     outline: 2px solid hsl(var(--ring));
     outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cta-section {
+        animation: none;
+        opacity: 1;
+    }
 }
 
 /* Scroll-in reveal (respects prefers-reduced-motion in JS) */
@@ -552,6 +565,17 @@ h2 {
 }
 
 /* ===== hero / title ===== */
+@keyframes heroTitleWordIn {
+    from {
+        opacity: 0;
+        transform: translateY(0.25em);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .title-hero {
     margin: 1rem auto 0;
     text-align: center;
@@ -570,18 +594,44 @@ h2 {
 
 .title-hero-word-1 {
     color: red;
+    animation: heroTitleWordIn 0.6s ease-out forwards;
+    opacity: 0;
 }
 
 .title-hero-sep {
     color: yellow;
     margin: 0 0.05em;
+    animation: heroTitleWordIn 0.5s ease-out 0.15s forwards;
+    opacity: 0;
 }
 
 .title-hero-word-2 {
     color: hsl(var(--title-hero-accent));
+    animation: heroTitleWordIn 0.6s ease-out 0.25s forwards;
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .title-hero-word-1,
+    .title-hero-sep,
+    .title-hero-word-2 {
+        animation: none;
+        opacity: 1;
+    }
 }
 
 /* ===== hero pills + spotify ===== */
+@keyframes heroPillIn {
+    from {
+        opacity: 0;
+        transform: translateY(0.35em) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
 .hero-pills {
     display: flex;
     flex-wrap: wrap;
@@ -604,6 +654,36 @@ h2 {
     border-radius: 9999px;
     border: 1px solid transparent;
     transition: opacity 0.15s;
+    animation: heroPillIn 0.45s ease-out forwards;
+    opacity: 0;
+}
+
+.hero-pill:nth-child(1) { animation-delay: 0.35s; }
+.hero-pill:nth-child(2) { animation-delay: 0.45s; }
+.hero-pill:nth-child(3) { animation-delay: 0.55s; }
+
+.hero-spotify-pill {
+    animation: heroPillIn 0.45s ease-out 0.65s forwards;
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-pill,
+    .hero-spotify-pill {
+        animation: none;
+        opacity: 1;
+    }
+}
+
+@keyframes sectionRevealIn {
+    from {
+        opacity: 0;
+        transform: translateY(0.5em);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-pill:hover {
